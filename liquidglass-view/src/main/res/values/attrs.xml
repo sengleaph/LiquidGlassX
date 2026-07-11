@@ -1,0 +1,17 @@
+<resources>
+    <declare-styleable name="GlassView">
+        <attr name="frost" format="dimension" />
+        <attr name="tintColor" format="color" />
+        <attr name="tintAlpha" format="float" />
+        <attr name="cornerRadius" format="dimension" />
+        <attr name="edge" format="float" />
+        <attr name="contrast" format="float" />
+        <attr name="saturation" format="float" />
+        <attr name="refraction" format="float" />
+        <attr name="curve" format="float" />
+        <attr name="dispersion" format="float" />
+        <attr name="lightAngle" format="float" />
+        <attr name="liveBlur" format="boolean" />
+        <attr name="backdropSource" format="reference" />
+    </declare-styleable>
+</resources>

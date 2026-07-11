@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Backdrop image — must be the first sibling for the auto sibling-walk to pick it up. -->
+    <ImageView
+        android:id="@+id/backdrop"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_app"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Hero card: live-updating preview of the current style. -->
+    <com.sifu.liquidglass.GlassView
+        android:id="@+id/heroCard"
+        style="@style/GlassView.Frosted"
+        android:layout_width="280dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Liquid Glass"
+            android:textColor="#FFFFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </com.sifu.liquidglass.GlassView>
+
+    <!-- Controls panel: itself a glass surface. Contains a scrollable list of preset chips + sliders. -->
+    <com.sifu.liquidglass.GlassView
+        android:id="@+id/controlPanel"
+        style="@style/GlassView.Dark"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="16dp"
+        app:cornerRadius="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/heroCard">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Preset chips -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="PRESET"
+                    android:textColor="#B0FFFFFF"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/presetFrosted"
+                            style="?attr/borderlessButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:text="Frosted"
+                            android:textColor="#FFFFFF" />
+
+                        <Button
+                            android:id="@+id/presetVivid"
+                            style="?attr/borderlessButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:text="Vivid"
+                            android:textColor="#FFFFFF" />
+
+                        <Button
+                            android:id="@+id/presetSubtle"
+                            style="?attr/borderlessButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:text="Subtle"
+                            android:textColor="#FFFFFF" />
+
+                        <Button
+                            android:id="@+id/presetDark"
+                            style="?attr/borderlessButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:text="Dark"
+                            android:textColor="#FFFFFF" />
+
+                        <Button
+                            android:id="@+id/presetRainbow"
+                            style="?attr/borderlessButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rainbow"
+                            android:textColor="#FFFFFF" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <!-- Slider block: Frost radius -->
+                <include
+                    android:id="@+id/frostRow"
+                    layout="@layout/customize_slider_row" />
+
+                <include
+                    android:id="@+id/cornerRow"
+                    layout="@layout/customize_slider_row" />
+
+                <include
+                    android:id="@+id/refractionRow"
+                    layout="@layout/customize_slider_row" />
+
+                <include
+                    android:id="@+id/curveRow"
+                    layout="@layout/customize_slider_row" />
+
+                <include
+                    android:id="@+id/dispersionRow"
+                    layout="@layout/customize_slider_row" />
+
+                <include
+                    android:id="@+id/edgeRow"
+                    layout="@layout/customize_slider_row" />
+
+                <include
+                    android:id="@+id/tintAlphaRow"
+                    layout="@layout/customize_slider_row" />
+
+<!--                <include-->
+<!--                    android:id="@+id/lightAngleRow"-->
+<!--                    layout="@layout/customize_slider_row" />-->
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </com.sifu.liquidglass.GlassView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
