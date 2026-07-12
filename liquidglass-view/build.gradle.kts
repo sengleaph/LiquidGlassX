@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("maven-publish")
 }
 
 android {
@@ -27,7 +28,24 @@ android {
         targetCompatibility = JavaVersion.VERSION_21
     }
 }
-
+kotlin {
+    explicitApi()
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
+    }
+}
+afterEvaluate {
+    publishing {
+        publications {
+            register<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.github.sengleaph"
+                artifactId = project.name
+                version = System.getenv("VERSION") ?: "1.0.0"
+            }
+        }
+    }
+}
 dependencies {
     implementation(libs.androidx.core.ktx)
 }
