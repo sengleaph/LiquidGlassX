@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("maven-publish")
 }
 
 android {
@@ -30,4 +31,23 @@ android {
 
 dependencies {
     implementation(libs.androidx.core.ktx)
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            register<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.github.sengleaph"
+                artifactId = project.name
+                version = System.getenv("VERSION") ?: "1.2.0"
+            }
+        }
+    }
 }
