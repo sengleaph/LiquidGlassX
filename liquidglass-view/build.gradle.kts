@@ -35,7 +35,7 @@ dependencies {
 
 kotlin {
     compilerOptions {
-        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
     }
 }
 
@@ -46,7 +46,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.sengleaph"
                 artifactId = project.name
-                version = System.getenv("VERSION") ?: "1.2.1"
+                version = System.getenv("VERSION") ?: "1.2.2"
             }
         }
     }
