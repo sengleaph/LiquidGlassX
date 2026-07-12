@@ -25,7 +25,7 @@ import com.sifu.liquidglass.gl.GlassRenderer
  *
  * Requires API 31+.
  */
-class GlassView @JvmOverloads constructor(
+public class GlassView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -35,48 +35,48 @@ class GlassView @JvmOverloads constructor(
 
     // ---- Public properties (Prismal-style parameter set, API-compatible with Phase 0) ------
 
-    var frost: Float = 24f * density
+    public var frost: Float = 24f * density
         set(value) { field = value; renderer.frost = value; invalidateGlass() }
 
-    var tintColor: Int = 0xFFFFFF
+    public var tintColor: Int = 0xFFFFFF
         set(value) { field = value; renderer.tintColor = value; invalidateGlass() }
 
-    var tintAlpha: Float = 0.15f
+    public var tintAlpha: Float = 0.15f
         set(value) { field = value; renderer.tintAlpha = value; invalidateGlass() }
 
-    var cornerRadius: Float = 28f * density
+    public var cornerRadius: Float = 28f * density
         set(value) { field = value; renderer.cornerRadius = value; rebuildOutline(); invalidateGlass() }
 
-    var edge: Float = 0.6f
+    public var edge: Float = 0.6f
         set(value) { field = value; renderer.edge = value; invalidateGlass() }
 
-    var contrast: Float = 1f
+    public var contrast: Float = 1f
         set(value) { field = value; invalidateGlass() }
 
-    var saturation: Float = 1.15f
+    public var saturation: Float = 1.15f
         set(value) { field = value; invalidateGlass() }
 
-    var refraction: Float = 0.65f
+    public var refraction: Float = 0.65f
         set(value) { field = value; renderer.refraction = value; invalidateGlass() }
 
-    var curve: Float = 1.4f
+    public var curve: Float = 1.4f
         set(value) { field = value; renderer.curve = value; invalidateGlass() }
 
-    var dispersion: Float = 0.2f
+    public var dispersion: Float = 0.2f
         set(value) { field = value; renderer.dispersion = value; invalidateGlass() }
 
-    var lightAngle: Float = 135f
+    public var lightAngle: Float = 135f
         set(value) { field = value; renderer.lightAngleDeg = value; invalidateGlass() }
 
     /** When true, the backdrop is recaptured every frame from a pre-draw listener. */
-    var liveBlur: Boolean = false
+    public var liveBlur: Boolean = false
         set(value) {
             field = value
             if (value) attachPreDrawSync() else detachPreDrawSync()
         }
 
     /** Down-sample factor for the captured backdrop before uploading to GL. `1f` = full-res. */
-    var downsampleFactor: Float = 0.5f
+    public var downsampleFactor: Float = 0.5f
         set(value) {
             field = value.coerceIn(0.1f, 1f)
             renderer.downsampleFactor = field
@@ -190,7 +190,7 @@ class GlassView @JvmOverloads constructor(
 
     // ---- Preset / snapshot API ---------------------------------------------
 
-    fun applyStyle(style: GlassStyle) {
+    public fun applyStyle(style: GlassStyle) {
         frost = style.frost
         tintColor = style.tintColor
         tintAlpha = style.tintAlpha
@@ -204,7 +204,7 @@ class GlassView @JvmOverloads constructor(
         lightAngle = style.lightAngle
     }
 
-    fun getStyle(): GlassStyle = GlassStyle(
+    public fun getStyle(): GlassStyle = GlassStyle(
         frost = frost,
         tintColor = tintColor,
         tintAlpha = tintAlpha,

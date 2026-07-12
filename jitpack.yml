@@ -3,3 +3,6 @@ jdk:
 
 before_install:
   - export VERSION=$(git describe --tags --abbrev=0)
+
+install:
+  - ./gradlew -PVERSION=$VERSION :liquidglass-view:publishToMavenLocal

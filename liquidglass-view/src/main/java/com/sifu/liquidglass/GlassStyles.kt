@@ -12,10 +12,10 @@ import android.content.Context
  * glassView.applyStyle(GlassStyles.Vivid(context).copy(tintAlpha = 0.25f))  // tweak
  * ```
  */
-object GlassStyles {
+public object GlassStyles {
 
     /** Classic Apple-style frosted glass — soft, neutral, high edge highlight. */
-    fun Frosted(context: Context) = GlassStyle(
+    public fun Frosted(context: Context): GlassStyle = GlassStyle(
         frost = dp(context, 24f),
         tintColor = 0xFFFFFF,
         tintAlpha = 0.15f,
@@ -30,7 +30,7 @@ object GlassStyles {
     )
 
     /** Vibrant, high-saturation glass — hero cards and media apps. */
-    fun Vivid(context: Context) = GlassStyle(
+    public fun Vivid(context: Context): GlassStyle = GlassStyle(
         frost = dp(context, 30f),
         tintColor = 0xFFFFFF,
         tintAlpha = 0.12f,
@@ -45,7 +45,7 @@ object GlassStyles {
     )
 
     /** Barely-there frosted overlay for lightweight UI over busy backgrounds. */
-    fun Subtle(context: Context) = GlassStyle(
+    public fun Subtle(context: Context): GlassStyle = GlassStyle(
         frost = dp(context, 16f),
         tintColor = 0xFFFFFF,
         tintAlpha = 0.08f,
@@ -60,7 +60,7 @@ object GlassStyles {
     )
 
     /** Dark, moody glass — bottom bars and toolbars over photos. */
-    fun Dark(context: Context) = GlassStyle(
+    public fun Dark(context: Context): GlassStyle = GlassStyle(
         frost = dp(context, 32f),
         tintColor = 0x0A0A12,
         tintAlpha = 0.35f,
@@ -75,7 +75,7 @@ object GlassStyles {
     )
 
     /** Maximum dispersion — visible rainbow at the rim, for playful UIs. */
-    fun Rainbow(context: Context) = GlassStyle(
+    public fun Rainbow(context: Context): GlassStyle = GlassStyle(
         frost = dp(context, 28f),
         tintColor = 0xFFFFFF,
         tintAlpha = 0.1f,
@@ -89,5 +89,5 @@ object GlassStyles {
         lightAngle = 135f,
     )
 
-    private fun dp(context: Context, value: Float) = GlassStyle.dp(context, value)
+    private fun dp(context: Context, value: Float): Float = GlassStyle.dp(context, value)
 }

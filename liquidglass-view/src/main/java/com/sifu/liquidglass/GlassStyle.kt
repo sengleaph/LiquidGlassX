@@ -18,7 +18,7 @@ import android.util.TypedValue
  * - [lightAngle] is in degrees: `0` = light from right, `90` = top, `135` = top-left (default),
  *   `180` = left, `270` = bottom.
  */
-data class GlassStyle(
+public data class GlassStyle(
     val frost: Float,
     val tintColor: Int,
     val tintAlpha: Float,
@@ -31,9 +31,9 @@ data class GlassStyle(
     val dispersion: Float,
     val lightAngle: Float = 135f,
 ) {
-    companion object {
+    public companion object {
         /** Convert a dp value to px against a [Context]'s current display metrics. */
-        fun dp(context: Context, value: Float): Float = TypedValue.applyDimension(
+        public fun dp(context: Context, value: Float): Float = TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP,
             value,
             context.resources.displayMetrics
