@@ -35,7 +35,7 @@ android {
 }
 kotlin {
     compilerOptions {
-        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
     }
 }
 dependencies {
@@ -47,6 +47,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.recyclerview)
     implementation("com.github.sengleaph:LiquidGlassX:1.2.1")
+//    implementation(project(":liquidglass-view"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
