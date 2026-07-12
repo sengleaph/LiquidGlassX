@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Backdrop — vertical color bands make refraction + chromatic dispersion easy to see.
+         First sibling so GlassView's capturer picks it up. -->
+    <ImageView
+        android:id="@+id/heroImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_app"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Phase 1 tag so it's obvious which build you're looking at. -->
+    <TextView
+        android:id="@+id/phaseTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="#88000000"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="6dp"
+        android:text="Phase 3 · Liquid Glass"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Hero card: preview of the current style. -->
+    <com.sifu.liquidglass.GlassView
+        android:id="@+id/heroCard"
+        style="@style/GlassView.Frosted"
+        android:layout_width="280dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/phaseTag">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Liquid Glass"
+            android:textColor="#FFFFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </com.sifu.liquidglass.GlassView>
+
+    <!-- Controls panel: itself a glass surface so you get two overlapping glass views. -->
+    <com.sifu.liquidglass.GlassView
+        android:id="@+id/controlPanel"
+        style="@style/GlassView.Dark"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="16dp"
+        app:cornerRadius="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/heroCard">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Presets -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="PRESETS"
+                    android:textColor="#B0FFFFFF"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/presetFrosted"
+                            style="?attr/borderlessButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Frosted"
+                            android:textColor="#FFFFFF" />
+
+                        <Button
+                            android:id="@+id/presetVivid"
+                            style="?attr/borderlessButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Vivid"
+                            android:textColor="#FFFFFF" />
+
+                        <Button
+                            android:id="@+id/presetSubtle"
+                            style="?attr/borderlessButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Subtle"
+                            android:textColor="#FFFFFF" />
+
+                        <Button
+                            android:id="@+id/presetDark"
+                            style="?attr/borderlessButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dark"
+                            android:textColor="#FFFFFF" />
+
+                        <Button
+                            android:id="@+id/presetRainbow"
+                            style="?attr/borderlessButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rainbow"
+                            android:textColor="#FFFFFF" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <!-- WORKING NOW header -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="WORKING NOW · these change the pixels"
+                    android:textColor="#88E0FFB0"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <include
+                    android:id="@+id/frostRow"
+                    layout="@layout/customize_slider_row" />
+
+                <include
+                    android:id="@+id/tintAlphaRow"
+                    layout="@layout/customize_slider_row" />
+
+                <include
+                    android:id="@+id/cornerRow"
+                    layout="@layout/customize_slider_row" />
+
+                <include
+                    android:id="@+id/edgeRow"
+                    layout="@layout/customize_slider_row" />
+
+                <!-- Tint color swatches -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Tint color"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/tintWhite"
+                        style="?attr/borderlessButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="White"
+                        android:textColor="#FFFFFF" />
+
+                    <Button
+                        android:id="@+id/tintBlack"
+                        style="?attr/borderlessButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Black"
+                        android:textColor="#FFFFFF" />
+
+                    <Button
+                        android:id="@+id/tintBlue"
+                        style="?attr/borderlessButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Blue"
+                        android:textColor="#7FB3FF" />
+
+                    <Button
+                        android:id="@+id/tintRose"
+                        style="?attr/borderlessButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rose"
+                        android:textColor="#FFA0B0" />
+                </LinearLayout>
+
+                <!-- Live capture toggle -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Live capture (every frame)"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/liveBlurSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <!-- Lens controls -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="LENS · Snell refraction + chromatic dispersion"
+                    android:textColor="#88B0E0FF"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <include
+                    android:id="@+id/refractionRow"
+                    layout="@layout/customize_slider_row" />
+
+                <include
+                    android:id="@+id/dispersionRow"
+                    layout="@layout/customize_slider_row" />
+
+                <include
+                    android:id="@+id/curveRow"
+                    layout="@layout/customize_slider_row" />
+
+                <include
+                    android:id="@+id/lightAngleRow"
+                    layout="@layout/customize_slider_row" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </com.sifu.liquidglass.GlassView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,10 +9,11 @@ android {
 
     defaultConfig {
         applicationId = "com.sifu.myliquidglassx"
-        minSdk = 33
+        minSdk = 31
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
+
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
