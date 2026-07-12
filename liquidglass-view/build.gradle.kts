@@ -46,7 +46,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.sengleaph"
                 artifactId = project.name
-                version = System.getenv("VERSION") ?: "1.2.2"
+                version = System.getenv("VERSION") ?: "1.2.3"
             }
         }
     }
