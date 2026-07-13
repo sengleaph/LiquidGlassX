@@ -20,15 +20,28 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
 
         // Switch which layout is active by uncommenting one line:
-//        setContentView(R.layout.activity_main)     // sliders playground (legacy)
-//        setContentView(R.layout.example_hero)      // single glass card over a photo
-//        setContentView(R.layout.example_list)      // scrollable list + fixed glass bar
-        setContentView(R.layout.example_customize)   // NEW: full customization studio
+//        setContentView(R.layout.activity_main)         // sliders playground (legacy)
+//        setContentView(R.layout.example_hero)          // single glass card over a photo
+//        setContentView(R.layout.example_list)          // scrollable list + fixed glass bar
+//        setContentView(R.layout.example_customize)     // full customization studio
+        setContentView(R.layout.example_music_player)    // NEW: music player sample
 
         // Each setup fn no-ops if its expected view isn't in the currently-inflated layout,
-        // so all three examples can share this Activity.
+        // so all examples can share this Activity.
         setupCustomizeDemo()
         setupListDemo()
+        setupMusicPlayerDemo()
+    }
+
+    // ---- Music player demo ---------------------------------------------------
+
+    private fun setupMusicPlayerDemo() {
+        val playPause = findViewById<Button>(R.id.btnPlayPause) ?: return
+        var isPlaying = false
+        playPause.setOnClickListener {
+            isPlaying = !isPlaying
+            playPause.text = if (isPlaying) "⏸" else "▶"
+        }
     }
 
     // ---- Customize demo ------------------------------------------------------
